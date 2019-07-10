@@ -5,18 +5,17 @@ install: skip
 addons:
   apt:
     packages:
-    - pass
-env:
-  - DISTRO=fedora
-  - DISTRO=debian
-  - DISTRO=ubuntu
-  - DISTRO=ls-debian
-  - DISTRO=ls-ubuntu
-script: ./travis/run.sh -c
+      - pass
+
+env: IMAGE="pkg"
+
+script: ../pack.sh
+
 deploy:
-  provider: script
-  skip_cleanup: true
-  script: ./travis/run.sh
-  on:
-    repo: ghdl/docker
-    branch: master
+  - provider: script
+    skip_cleanup: true
+    script: ../travis/run.sh "$IMAGE"
+    on:
+      repo: ghdl/docker
+      branch: pack
+
