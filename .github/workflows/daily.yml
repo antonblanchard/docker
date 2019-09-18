@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Clone ghdl
-      run: git clone https://github.com/ghdl/ghdl
+      run: git clone -b actions https://github.com/eine/ghdl
     - name: Build 'ghdl' and 'pkg' images
       run: ./run.sh -b $TARGS
       env:
